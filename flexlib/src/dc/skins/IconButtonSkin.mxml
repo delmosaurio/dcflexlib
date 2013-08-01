@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<s:SparkButtonSkin xmlns:fx="http://ns.adobe.com/mxml/2009" 
+             xmlns:s="library://ns.adobe.com/flex/spark" 
+             xmlns:fb="http://ns.adobe.com/flashbuilder/2009"
+             minWidth="21" minHeight="21" 
+             alpha.disabled="0.5">
+	<fx:Metadata>[HostComponent("dc.components.IconButton")]</fx:Metadata>
+     
+    <fx:Script fb:purpose="styling">
+        <![CDATA[         
+            import spark.components.Group;
+            /* Define the skin elements that should not be colorized. 
+            For button, the graphics are colorized but the label is not. */
+            static private const exclusions:Array = [];
+            
+            /** 
+             * @private
+             */     
+            override public function get colorizeExclusions():Array {return exclusions;}
+            
+            /**
+             * @private
+             */
+            override protected function initializationComplete():void
+            {
+                super.initializationComplete();
+            }  
+            
+            /**
+             *  @private
+             */
+            override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number) : void
+            {
+                var cr:Number = getStyle("cornerRadius");
+				var ic:* = getStyle("icon");
+                hostComponent.buttonMode = true;
+				
+                if (cornerRadius != cr) {
+                    cornerRadius = cr;
+                }
+                
+				if (ic) {
+					imageIcon = ic;
+				}
+				
+                super.updateDisplayList(unscaledWidth, unscaledHeight);
+            }
+            
+			[Bindable] private var cornerRadius:Number = 2;
+			
+			[Bindable] private var imageIcon:* = null;
+                                 
+        ]]>        
+    </fx:Script>
+        
+    <!-- states -->
+    <s:states>
+        <s:State name="up" />
+        <s:State name="over" />
+        <s:State name="down" />
+        <s:State name="disabled" />
+    </s:states>
+    
+	<s:BitmapImage source="{imageIcon}" verticalCenter="0" horizontalCenter="0"/>
+	
+</s:SparkButtonSkin>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:GridItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					xmlns:s="library://ns.adobe.com/flex/spark" 
+					xmlns:mx="library://ns.adobe.com/flex/mx" 
+					clipAndEnableScrolling="true"
+					top="0"
+					right="0"
+					bottom="0"
+					left="0"
+					creationComplete="creationCompleteHandler(event)"
+					>
+	
+	<fx:Script>
+		<![CDATA[
+			import dc.components.RequestButton;
+			
+			import mx.binding.utils.BindingUtils;
+			import mx.core.IVisualElement;
+			import mx.events.FlexEvent;
+			import mx.utils.ObjectUtil;
+						
+			override public function prepare(hasBeenRecycled:Boolean):void {
+				if (data==null) return;
+				
+				if (column.dataField==null || column.dataField == "") return;
+				
+				if( column.labelFunction != null ) {
+					lblData.text = column.labelFunction( data, column );
+				} else {
+					if (!data.hasOwnProperty(column.dataField))
+					{
+						lblData.text = "";
+						return;	
+					}
+					lblData.text = data[column.dataField];
+				}
+								
+			}
+			
+			protected function creationCompleteHandler(event:FlexEvent):void {
+				//TODO: Make itemRender
+				var bf:ClassFactory = new ClassFactory(RequestButton);
+				
+				var col:EGridColumn = column as EGridColumn;
+				
+				for (var i:int=0;i<col.buttons.length;i++) {
+					var b:Object = col.buttons.getItemAt(i);
+					
+					if (b is RequestButton) {
+						var ib:RequestButton = b as RequestButton;
+						bf.properties = { eventType:ib.eventType, toolTip:ib.toolTip, styleName:ib.styleName };
+						
+						var rb:RequestButton = bf.newInstance();
+						
+						rb.data = data;
+						
+						BindingUtils.bindProperty(rb, "data", this, "data");
+						
+						h_group.addElement( rb as IVisualElement );
+					}
+				}	
+				
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<s:states>
+		<s:State name="normal" />
+		<s:State name="hovered" />
+		<s:State name="selected" />
+	</s:states>
+	
+	<s:HGroup id="h_group" verticalCenter="0" right="0" verticalAlign="middle" gap="1" 
+			  visible.normal="false" visible.hovered="true" visible.selected="true"/>
+	
+	<s:Label id="lblData" verticalCenter="0" left="7"/>
+	
+</s:GridItemRenderer>

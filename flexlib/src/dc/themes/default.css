@@ -1,0 +1,11 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+@namespace ego "library://ns.egoargentina.com/flex/2012";
+@namespace components "dc.components.*";
+
+/* BUTTONS */
+components|IconButton {
+	skinClass: ClassReference("dc.skins.IconButtonSkin");
+}
+

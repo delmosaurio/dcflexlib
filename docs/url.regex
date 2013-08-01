@@ -1,0 +1,15 @@
+%YAML 1.2
+---
+text: "#!/module/view/?params\r\n\
+  #!/module/section/view/?params\r\n\
+  #!/module/section/section/view/?params\r\n\
+  \r\n\
+  #!/home/?"
+regex: "(?<sections>(?<=(#!/|/))(?<section>(?<=/)([A-z0-9_]+)(?=/?)))\r\n\
+  \r\n\
+  ((?<=(?<=(#!(/[A-z0-9_]+/?)([A-z0-9_]+/?)?\\?)))(([A-z0-9_]+)=([A-z0-9_]+))|(?<=(([A-z0-9_]+)=([A-z0-9_]+)&))(([A-z0-9_]+)=([A-z0-9_]+)))\r\n\
+  \r\n\
+  /#!(\\/[A-z0-9_]+\\/?)([A-z0-9_]+\\/?)?\\??(?<param>([A-z0-9_]+)=([A-z0-9_]+)&?)*/\r\n\
+  \r\n\
+  (?<=a)b\r\n"
+...

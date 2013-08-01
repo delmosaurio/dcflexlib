@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
+  <includeClasses>
+    <classEntry path="dc.components.CurrencyImput"/>
+    <classEntry path="dc.components.EgoTextInput"/>
+    <classEntry path="dc.components.EgoApplication"/>
+    <classEntry path="ego.components.containers.NavViewStack"/>
+    <classEntry path="dc.collection.PaginatedCollection"/>
+    <classEntry path="dc.components.EDataGrid"/>
+    <classEntry path="dc.components.IconButton"/>
+    <classEntry path="dc.skins.IconButtonSkin"/>
+    <classEntry path="ego.core.RequestViewManager"/>
+    <classEntry path="dc.components.RequestView"/>
+    <classEntry path="dc.events.RequestEvent"/>
+    <classEntry path="dc.utils.RequestUtils"/>
+    <classEntry path="dc.events.RequestViewEvent"/>
+    <classEntry path="ego.core.RequestController"/>
+    <classEntry path="dc.utils.RegexUtils"/>
+    <classEntry path="dc.components.RequestButton"/>
+    <classEntry path="dc.mvc.ModelService"/>
+    <classEntry path="dc.mvc.IViewModel"/>
+    <classEntry path="dc.components.gridClasses.EGridColumn"/>
+    <classEntry path="dc.components.gridClasses.EItemRenderer"/>
+    <classEntry path="dc.events.ViewEvent"/>
+    <classEntry path="dc.components.supportClasses.ILabelFunctionAdapter"/>
+    <classEntry path="dc.components.supportClasses.DefaultLabelFunction"/>
+    <classEntry path="dc.components.gridClasses.EDefaultGridItemRenderer"/>
+    <classEntry path="dc.mvc.BaseViewModel"/>
+    <classEntry path="dc.utils.DevUtils"/>
+    <classEntry path="dc.components.dialogs.MessageBox"/>
+    <classEntry path="dc.validators.StringValidator"/>
+    <classEntry path="dc.validators.NumberValidator"/>
+    <classEntry path="dc.validators.CurrencyValidator"/>
+    <classEntry path="dc.components.dialogs.SuccessMessageBox"/>
+    <classEntry path="dc.components.dialogs.WarningMessageBox"/>
+    <classEntry path="dc.components.dialogs.ErrorMessageBox"/>
+    <classEntry path="dc.skins.MessageBoxSkin"/>
+    <classEntry path="dc.events.PopUpWindowEvent"/>
+    <classEntry path="dc.events.DataEvent"/>
+    <classEntry path="dc.utils.FormatUtils"/>
+    <classEntry path="dc.components.LabelLink"/>
+    <classEntry path="dc.events.LoggerEvent"/>
+    <classEntry path="dc.components.dialogs.MessageBoxManager"/>
+    <classEntry path="dc.components.ThrottleTextInput"/>
+    <classEntry path="dc.events.ThrottleEvent"/>
+    <classEntry path="dc.collection.IPagedArrayCollection"/>
+    <classEntry path="dc.collection.PagedArrayCollection"/>
+    <classEntry path="dc.collection.PagedCollectionEventKind"/>
+  </includeClasses>
+  <includeResources>
+    <resourceEntry destPath="design.xml" sourcePath="design.xml"/>
+    <resourceEntry destPath="dc-manifest.xml" sourcePath="dc-manifest.xml"/>
+  </includeResources>
+  <namespaceManifests>
+    <namespaceManifestEntry manifest="dc-manifest.xml" namespace="library://ns.dcarrozzo.com/flex/2013"/>
+  </namespaceManifests>
+</flexLibProperties>

@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+
+<componentPackage>
+
+	<!-- dc.components -->	
+	<!-- application -->
+	<component id="DcApplication" class="dc.components.DcApplication"/>
+	<component id="RequestApplication" class="dc.components.RequestApplication"/>
+
+	<!-- inputs -->
+	<component id="DcTextInput" class="dc.components.DcTextInput"/>
+    <component id="NumberInput" class="dc.components.NumberInput"/>
+    <component id="CurrencyImput" class="dc.components.CurrencyImput"/>
+	<component id="PercentInput" class="dc.components.PercentInput"/>
+	<component id="EsDateField" class="dc.components.EsDateField"/>
+	<component id="DateTimeField" class="dc.components.DateTimeField"/>
+	<component id="ThrottleTextInput" class="dc.components.ThrottleTextInput"/>
+
+	<!-- bottons -->
+    <component id="IconButton" class="dc.components.IconButton"/>
+	<component id="RequestButton" class="dc.components.RequestButton"/>
+	<component id="LabelLink" class="dc.components.LabelLink"/>
+	
+	<!-- mvc -->
+	<component id="RequestView" class="dc.components.RequestView"/>
+
+	<!-- dataProviders -->
+	<component id="EDataGrid" class="dc.components.EDataGrid"/>
+	<component id="FooterDataGrid" class="dc.components.FooterDataGrid"/>
+	
+	<!-- parts -->
+	<component id="FooterGridColumn" class="dc.components.gridClasses.FooterGridColumn"/>
+	<component id="EGridColumn" class="dc.components.gridClasses.EGridColumn"/>
+	
+	<!-- validators -->
+	<component id="StringValidator" class="dc.validators.StringValidator"/>
+	<component id="NumberValidator" class="dc.validators.NumberValidator"/>
+	<component id="CurrencyValidator" class="dc.validators.CurrencyValidator"/>
+	
+    <!-- windows -->
+    <component id="PopupTitleWindow" class="dc.components.PopupTitleWindow"/>
+    
+	<!-- MessageBox -->
+	<component id="MessageBox" class="dc.components.dialogs.MessageBox"/>
+	<component id="SuccessMessageBox" class="dc.components.dialogs.SuccessMessageBox"/>
+	<component id="WarningMessageBox" class="dc.components.dialogs.WarningMessageBox"/>
+	<component id="ErrorMessageBox" class="dc.components.dialogs.ErrorMessageBox"/>
+	
+</componentPackage>

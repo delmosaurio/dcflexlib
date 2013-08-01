@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<design version="2">
+
+    <namespaces>
+        <namespace prefix="dc" uri="library://ns.dcarrozzo.com/flex/2013" />
+    </namespaces>
+	
+	 <categories>
+        <category id="controls" label="Controls" defaultExpand="true"/>
+    </categories>
+	
+	<components>
+		<!-- dc.components -->
+		<!-- application -->
+		<component name="DcApplication" namespace="dc.components" category="controls" displayName="DcApplication" />
+		<component name="RequestApplication" namespace="dc.components" category="controls" displayName="RequestApplication" />
+		
+		<!-- inputs -->
+		<component name="DcTextInput" namespace="dc.components" category="controls" displayName="DcTextInput" />
+		<component name="NumberInput" namespace="dc.components" category="controls" displayName="NumberInput" />
+		<component name="CurrencyImput" namespace="dc.components" category="controls" displayName="CurrencyImput" />
+		<component name="PercentInput" namespace="dc.components" category="controls" displayName="PercentInput" />
+		<component name="EsDateField" namespace="dc.components" category="controls" displayName="EsDateField" />
+		<component name="DateTimeField" namespace="dc.components" category="controls" displayName="DateTimeField" />
+		<component name="ThrottleTextInput" namespace="dc.components" category="controls" displayName="ThrottleTextInput" />
+
+		<!-- bottons -->
+		<component name="IconButton" namespace="dc.components" category="controls" displayName="IconButton" />
+		<component name="RequestButton" namespace="dc.components" category="controls" displayName="RequestButton" />
+		<component name="LabelLink" namespace="dc.components" category="controls" displayName="LabelLink" />
+		
+		<!-- mvc -->
+		<component name="RequestView" namespace="dc.components" category="controls" displayName="RequestView" />
+
+		<!-- dataProviders -->
+		<component name="EDataGrid" namespace="dc.components" category="controls" displayName="EDataGrid" />
+		<component name="FooterDataGrid" namespace="dc.components" category="controls" displayName="FooterDataGrid" />
+		
+		<!-- parts -->
+		<component name="FooterGridColumn" namespace="dc.components.gridClasses" category="controls" displayName="FooterGridColumn" />
+		<component name="EGridColumn" namespace="dc.components.gridClasses" category="controls" displayName="EGridColumn" />
+		
+		<!-- validators -->
+		<component name="StringValidator" namespace="dc.validators" category="validators" displayName="StringValidator" />
+		<component name="NumberValidator" namespace="dc.validators" category="validators" displayName="NumberValidator" />
+		<component name="CurrencyValidator" namespace="dc.validators" category="validators" displayName="CurrencyValidator" />
+
+		<!-- windows -->
+		<component name="PopupTitleWindow" namespace="dc.components" category="controls" displayName="PopupTitleWindow" />
+		
+		<!-- MessageBox -->
+		<component name="MessageBox" namespace="dc.components.dialogs" category="dialogs" displayName="MessageBox" />
+		<component name="SuccessMessageBox" namespace="dc.components.dialogs" category="dialogs" displayName="SuccessMessageBox" />
+		<component name="WarningMessageBox" namespace="dc.components.dialogs" category="dialogs" displayName="WarningMessageBox" />
+		<component name="ErrorMessageBox" namespace="dc.components.dialogs" category="dialogs" displayName="ErrorMessageBox" />
+		
+		
+	</components>
+	
+</design>

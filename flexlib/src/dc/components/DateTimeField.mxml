@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This code  is distributed under Apache License. For more information see
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+The source is Copyright 2010 TJ Downes http://www.tjdownes.com. All Rights Reserved.
+
+TJ Downes shall have no responsibility, financial or otherwise, for
+any consequences arising out of the use of this material. The program
+material is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND, either express or implied.
+-->
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 xmlns:ns="library://ns.egoargentina.com/flex/2012" xmlns:components="dc.components.*"
+		 >
+	
+	<s:layout>
+		<s:HorizontalLayout gap="4"
+							verticalAlign="middle"/>
+	</s:layout>
+	
+	<fx:Metadata>
+		[Event("dateChange", type="flash.events.Event")]
+	</fx:Metadata>
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.events.PropertyChangeEvent;
+			import mx.events.PropertyChangeEventKind;
+			import mx.events.ValidationResultEvent;
+			import mx.validators.NumberValidatorDomainType;
+			
+			private static const TIME_HOURS_VALIDATION_ERROR:String = "Hours must be between 1 and 24";
+			
+			private static const TIME_MINUTES_VALIDATION_ERROR:String = "Minutes must be between 0 and 59";
+			
+			private static const TIME_SECONDS_VALIDATION_ERROR:String = "Seconds must be between 0 and 59";
+			
+			[Bindable]public var isValid:Boolean;
+			
+			[Bindable]public var enableSeconds:Boolean;
+			
+			[Bindable]private var _selectedDate:Date;
+			
+			public function set selectedDate(value:Date):void {
+				try
+				{
+					if (value != _selectedDate) {
+						_selectedDate = value;
+						
+						//hoursField.text = _selectedDate.hours.toString(); // > 12 ? String(_selectedDate.hours - 12) : _selectedDate.hours.toString();
+						hoursField.text = _selectedDate.hours < 10 ? "0" + _selectedDate.hours.toString() : _selectedDate.hours.toString();
+						minutesField.text = _selectedDate.minutes < 10 ? "0" + _selectedDate.minutes.toString() : _selectedDate.minutes.toString();
+						secondsField.text = _selectedDate.seconds < 10 ? "0" + _selectedDate.seconds.toString() : _selectedDate.seconds.toString();
+						//ampmList.selectedItem = _selectedDate.hours > 11 ? "PM" : "AM";
+						
+						//dispatchEvent(new Event("propertyChange"));
+						//dispatchEvent(new Event("dateChange"));
+						
+						var oldValue:Date = dateField.selectedDate;
+						
+						dateField.selectedDate = _selectedDate;
+						
+						var kind:String = PropertyChangeEventKind.UPDATE;
+						dispatchEvent(
+							new PropertyChangeEvent(
+								PropertyChangeEvent.PROPERTY_CHANGE,
+								false,
+								false,
+								kind,
+								"selectedDate",
+								oldValue,
+								_selectedDate,
+								this
+							)
+						);
+						
+						//check validaty
+						//var hoursValid:Boolean = hoursValidator.validate(hoursField.text).type != ValidationResultEvent.INVALID;
+						//var minutesValid:Boolean = minutesValidator.validate(minutesField.text).type != ValidationResultEvent.INVALID;
+						//var secondsValid:Boolean = secondsValidator.validate(secondsField.text).type != ValidationResultEvent.INVALID;
+						
+						//isValid = (hoursValid && minutesValid && secondsValid);
+					}
+				}
+				catch(err:Error)
+				{
+					trace("DateTimeField: Error \n" + err.message);
+				}
+				
+			}
+			
+			[Bindable(event="propertyChange")]
+			public function get selectedDate():Date {
+				return _selectedDate;
+			}
+			
+			private function setSelectedDate(event:Event=null):void {
+				
+				var hrs:Number = 0;
+				var mins:Number = 0;
+				var secs:Number = 0;
+				
+				try {
+					hrs = Number(hoursField.text);	
+					if (hrs < 0 || hrs > 24){
+						hrs = selectedDate.hours;	
+						hoursField.text = _selectedDate.hours < 10 ? "0" + _selectedDate.hours.toString() : _selectedDate.hours.toString();
+					}
+					
+				} catch(error:Error) { 
+					hrs = selectedDate.hours;
+					hoursField.text = _selectedDate.hours < 10 ? "0" + _selectedDate.hours.toString() : _selectedDate.hours.toString();
+				}
+				
+				try {
+					mins = Number(minutesField.text);
+					if (mins < 0 || mins > 59){
+						mins = selectedDate.minutes;
+						minutesField.text = _selectedDate.minutes < 10 ? "0" + _selectedDate.minutes.toString() : _selectedDate.minutes.toString();
+					}
+				} catch(error:Error) {
+					mins = selectedDate.minutes;
+					minutesField.text = _selectedDate.minutes < 10 ? "0" + _selectedDate.minutes.toString() : _selectedDate.minutes.toString();
+				}
+				
+				try {
+					secs = Number(secondsField.text);
+					if (secs < 0 || secs > 59){
+						secs = selectedDate.seconds;
+						secondsField.text = _selectedDate.seconds < 10 ? "0" + _selectedDate.seconds.toString() : _selectedDate.seconds.toString();
+					} 
+				} catch(error:Error) { 
+					secs = selectedDate.seconds;
+					secondsField.text = _selectedDate.seconds < 10 ? "0" + _selectedDate.seconds.toString() : _selectedDate.seconds.toString();
+				}
+				
+				//hrs = ampmList.selectedItem == "PM" ? hrs + 12 : hrs;
+				_selectedDate = new Date(dateField.selectedDate.fullYear, dateField.selectedDate.month, dateField.selectedDate.date, hrs, mins, secs, 0);
+				//dispatchEvent(new Event("propertyChange"));
+				//dispatchEvent(new Event("dateChange"));
+				
+				var oldValue:Date = dateField.selectedDate;
+				
+				dateField.selectedDate = _selectedDate;
+				
+				var kind:String = PropertyChangeEventKind.UPDATE;
+				dispatchEvent(
+					new PropertyChangeEvent(
+						PropertyChangeEvent.PROPERTY_CHANGE,
+						false,
+						false,
+						kind,
+						"selectedDate",
+						oldValue,
+						_selectedDate,
+						this
+					)
+				);
+				
+				//check validaty
+				//var hoursValid:Boolean = hoursValidator.validate(hoursField.text).type != ValidationResultEvent.INVALID;
+				//var minutesValid:Boolean = minutesValidator.validate(minutesField.text).type != ValidationResultEvent.INVALID;
+				//var secondsValid:Boolean = secondsValidator.validate(secondsField.text).type != ValidationResultEvent.INVALID;
+				
+				//isValid = (hoursValid && minutesValid && secondsValid);
+			}
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+	</fx:Declarations>
+	
+	<components:EsDateField id="dateField"
+						change="setSelectedDate(event)"
+						fontFamily="Arial"/>
+	<!--
+	<mx:DateField id="dateField"
+				  change="setSelectedDate()"
+				  fontFamily="Arial"/>
+	-->
+	
+	<s:TextInput id="hoursField"
+				 textAlign="right"
+				 width="20"
+				 maxChars="2"
+				 restrict="0-9"
+				 change="setSelectedDate(event)" />
+	
+	<s:Label text=":"
+			 color="#000000" />
+	<s:TextInput id="minutesField"
+				 maxChars="2"
+				 restrict="0-9"
+				 width="20"
+				 change="setSelectedDate(event)" />
+	
+	<s:Label text=":"
+			 color="#000000"
+			 visible="{enableSeconds}"
+			 includeInLayout="{enableSeconds}" />
+	<s:TextInput id="secondsField"
+				 maxChars="2"
+				 restrict="0-9"
+				 width="20"
+				 visible="{enableSeconds}"
+				 includeInLayout="{enableSeconds}"
+				 change="setSelectedDate(event)" />
+	
+</s:Group>
